@@ -38,7 +38,7 @@ export function segmentFunc(text: string): Promise<string[]> {
     binName += '.exe'
   }
 
-  const bin = path.resolve('bin', binName)
+  const bin = path.resolve(__filename, '..', '..', 'bin', binName)
   return new Promise((resolve, reject) => {
     const delimiter = 'a3d4a2ca-2f6a-4217-b31b-80739ea48e98'
     execFile(bin, ['--delimiter', delimiter, text], (err, stdout, stderr) => {
