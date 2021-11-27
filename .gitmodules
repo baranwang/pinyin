@@ -1,6 +1,6 @@
 [submodule "src/data/pinyin-data"]
 	path = src/data/pinyin-data
-	url = git@github.com:mozillazg/pinyin-data.git
+	url = https://github.com/mozillazg/pinyin-data.git
 [submodule "src/data/phrase-pinyin-data"]
 	path = src/data/phrase-pinyin-data
-	url = git@github.com:mozillazg/phrase-pinyin-data.git
+	url = https://github.com/mozillazg/phrase-pinyin-data.git
