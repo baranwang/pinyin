@@ -10,7 +10,7 @@
     "dev": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node --watch",
     "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node && tsc",
     "prebuild": "npm run makedata",
-    "postinstall": "downloadbin"
+    "postinstall": "npm run downloadbin"
   },
   "author": "baranwang",
   "license": "MIT",
