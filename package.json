@@ -9,8 +9,7 @@
     "downloadbin": "node ./script/download-bin.js",
     "dev": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node --watch",
     "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node && tsc",
-    "prebuild": "npm run makedata",
-    "postinstall": "npm run downloadbin"
+    "prebuild": "npm run makedata"
   },
   "author": "baranwang",
   "license": "MIT",

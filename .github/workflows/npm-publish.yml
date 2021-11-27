@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: 14
       - run: npm install
+      - run: npm run downloadbin
       - run: npm run build
 
   publish-npm:
