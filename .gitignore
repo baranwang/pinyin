@@ -1,6 +1,7 @@
 src/data/words.json
 src/data/phrases.json
 bin/*
+!bin/.gitkeep
 
 # Logs
 logs
