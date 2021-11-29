@@ -27,7 +27,7 @@ const makeWords = () => {
 
 const makePhrase = () => {
   const phrases = fs.readFileSync(
-    path.resolve("src/data/phrase-pinyin-data/pinyin.txt"),
+    path.resolve("src/data/phrase-pinyin-data/large_pinyin.txt"),
     "utf8"
   );
   const reslut = {};

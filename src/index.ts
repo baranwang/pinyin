@@ -15,7 +15,7 @@ export class Pinyin {
 
   constructor() {
     this.#wordsDict = this.#convertDict(wordsDict);
-    this.#phrasesDict = this.#convertDict(phrasesDict);
+    this.#phrasesDict = this.#convertDict(phrasesDict as Record<string, string[]>);
     this.#segment.useDefault();
   }
 
