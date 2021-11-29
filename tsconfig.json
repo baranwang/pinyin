@@ -9,6 +9,8 @@
     "declaration": true,
     "baseUrl": "./src",
     "rootDir": "./src",
-    "emitDeclarationOnly": true
-  }
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "dist"]
 }

@@ -6,11 +6,8 @@ type ITextArray = {
   type: 'hans' | 'nohans'
   text: string;
 }[]
-
-const segment = new Segment();
-segment.useDefault();
 export class Pinyin {
-  #segment = segment
+  #segment = new Segment()
 
   #wordsDict: Record<string, string> = {};
 
