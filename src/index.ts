@@ -1,4 +1,4 @@
-import { segmentFunc } from "./segment";
+import { Segment } from "novel-segment";
 import wordsDict = require("./data/words.json");
 import phrasesDict = require("./data/phrases.json");
 
@@ -7,7 +7,11 @@ type ITextArray = {
   text: string;
 }[]
 
+const segment = new Segment();
+segment.useDefault();
 export class Pinyin {
+  #segment = segment
+
   #wordsDict: Record<string, string> = {};
 
   #phrasesDict: Record<string, string> = {};
@@ -15,11 +19,12 @@ export class Pinyin {
   constructor() {
     this.#wordsDict = this.#convertDict(wordsDict);
     this.#phrasesDict = this.#convertDict(phrasesDict);
+    this.#segment.useDefault();
   }
 
-  async get(text: string) {
+  get(text: string) {
     const textArr = this.#convertText(text);
-    return await this.#convertPinyin(textArr);
+    return this.#convertPinyin(textArr);
   }
 
   #convertDict(dict: Record<string, string[]>) {
@@ -68,7 +73,7 @@ export class Pinyin {
     return dict[text] ?? "";
   }
 
-  async #convertPinyin(textArr: ITextArray) {
+  #convertPinyin(textArr: ITextArray) {
     let reslut: string[][] = []
     for (let index = 0; index < textArr.length; index++) {
       const item = textArr[index];
@@ -76,7 +81,9 @@ export class Pinyin {
         reslut.push([item.text]);
       }
       if (item.type === 'hans') {
-        const data = await segmentFunc(item.text)
+        const data = this.#segment.doSegment(item.text, {
+          simple: true,
+        })
         data.forEach((word) => {
           const res = this.#finder(this.#phrasesDict, word)
           if (res) {

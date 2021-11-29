@@ -2,4 +2,4 @@ script/
 src/
 .github/
 !dist/
-!bin/
+tsconfig.json
