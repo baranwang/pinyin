@@ -6,6 +6,16 @@
 
 Node.js 汉字转拼音，支持多音字，自动分词
 
+## 安装
+
+```shell
+npm i @baranwang/pinyin
+# or
+yarn add @baranwang/pinyin
+# or
+pnpm add @baranwang/pinyin
+```
+
 ## 使用
 
 ```javascript
