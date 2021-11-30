@@ -5,7 +5,8 @@ const path = require("path");
 
 const makeWords = () => {
   const words = fs.readFileSync(
-    path.resolve("src/data/pinyin-data/pinyin.txt"),
+    // path.resolve("src/data/pinyin-data/pinyin.txt"),
+    path.resolve("src/data/pinyin-data/zdic.txt"),
     "utf8"
   );
   const reslut = {};
