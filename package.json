@@ -6,8 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "makedata": "node ./script/makedata.js",
-    "start": "esbuild src/index.ts --outfile=dist/index.js --bundle --external:novel-segment --platform=node --watch",
-    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --external:novel-segment --platform=node && tsc",
+    "copydict": "node ./script/copydict.js",
+    "start": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node --watch && npm run copydict",
+    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node && tsc && npm run copydict",
     "prebuild": "npm run makedata",
     "prepublish": "npm run build"
   },
@@ -30,9 +31,10 @@
   "devDependencies": {
     "@types/node": "^16.11.10",
     "esbuild": "^0.14.0",
+    "fs-extra": "^10.0.0",
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "novel-segment": "^2.7.78"
+    "novel-segment": "^2.7.79"
   }
 }
