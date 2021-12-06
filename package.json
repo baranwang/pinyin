@@ -7,10 +7,9 @@
   "scripts": {
     "makedata": "node ./script/makedata.js",
     "copydict": "node ./script/copydict.js",
-    "start": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node --watch && npm run copydict",
-    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node && tsc && npm run copydict",
-    "prebuild": "npm run makedata",
-    "prepublish": "npm run build"
+    "start": "esbuild src/index.ts --outfile=dist/index.js --bundle --external:novel-segment --platform=node --watch",
+    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --external:novel-segment --platform=node && tsc",
+    "prebuild": "npm run makedata"
   },
   "author": "baranwang",
   "keywords": [
@@ -31,7 +30,6 @@
   "devDependencies": {
     "@types/node": "^16.11.10",
     "esbuild": "^0.14.0",
-    "fs-extra": "^10.0.0",
     "typescript": "^4.5.2"
   },
   "dependencies": {
