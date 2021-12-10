@@ -6,9 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "makedata": "node ./script/makedata.js",
-    "copydict": "node ./script/copydict.js",
-    "start": "esbuild src/index.ts --outfile=dist/index.js --bundle --external:novel-segment --platform=node --watch",
-    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --external:novel-segment --platform=node && tsc",
+    "start": "node ./script/esbuild.js",
+    "build": "NODE_ENV=production node ./script/esbuild.js",
     "prebuild": "npm run makedata"
   },
   "author": "baranwang",

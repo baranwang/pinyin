@@ -1,6 +1,8 @@
 import { Segment } from "novel-segment";
-import wordsDict = require("./data/words.json");
-import phrasesDict = require("./data/phrases.json");
+import { resolve } from 'path'
+import wordsDict from "./data/words.json";
+import phrasesDict from "./data/phrases.json";
+import segmentDict from './data/dict.txt'
 
 type ITextArray = {
   type: 'hans' | 'nohans'
@@ -14,9 +16,10 @@ export class Pinyin {
   #phrasesDict: Record<string, string> = {};
 
   constructor() {
-    this.#wordsDict = this.#convertDict(wordsDict);
-    this.#phrasesDict = this.#convertDict(phrasesDict as Record<string, string[]>);
-    this.#segment.useDefault();
+    this.#wordsDict = this.#convertDict(require(wordsDict));
+    this.#phrasesDict = this.#convertDict(require(phrasesDict));
+    this.#segment.useDefault({ nodict: true })
+    this.#segment.loadDict(resolve(__dirname, segmentDict));
   }
 
   get(text: string) {

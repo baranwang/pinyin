@@ -5,7 +5,6 @@
     "strict": true,
     "outDir": "dist",
     "sourceMap": true,
-    "resolveJsonModule": true,
     "declaration": true,
     "baseUrl": "./src",
     "rootDir": "./src",
