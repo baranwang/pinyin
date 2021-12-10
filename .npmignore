@@ -4,3 +4,6 @@ src/
 !dist/
 test/
 tsconfig.json
+types.d.ts
+.gitmodules
+.editorconfig
