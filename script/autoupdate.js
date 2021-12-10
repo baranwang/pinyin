@@ -38,7 +38,7 @@ const updateNpm = async (name) => {
   const { stdout } = spawnSync("git", ["cherry", "-v"]);
   if (stdout.length) {
     spawnSync("npm", ["version", "patch"], { stdio: "inherit" });
-    spawnSync("git", ["push", "origin", "master", "--follow-tags"], {
+    spawnSync("git", ["push", "--follow-tags"], {
       stdio: "inherit",
     });
   }
