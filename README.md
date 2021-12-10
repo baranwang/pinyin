@@ -26,7 +26,7 @@ const pinyin = new Pinyin();
 pinyin.get("你好"); // [["nǐ hǎo"]]
 ```
 
-## 依赖
+## 关于
 
 ### 词典来源
 [mozillazg/pinyin-data](https://github.com/mozillazg/pinyin-data.git)
