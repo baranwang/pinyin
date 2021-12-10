@@ -33,13 +33,17 @@ const updateNpm = async (name) => {
 };
 
 (async () => {
-  await updateNpm("novel-segment");
+  try {
+    await updateNpm("novel-segment");
 
-  const { stdout } = spawnSync("git", ["cherry", "-v"]);
-  if (stdout.length) {
-    spawnSync("npm", ["version", "patch"], { stdio: "inherit" });
-    spawnSync("git", ["push", "--follow-tags"], {
-      stdio: "inherit",
-    });
+    const { stdout } = spawnSync("git", ["cherry", "-v"]);
+    if (stdout.length) {
+      spawnSync("npm", ["version", "patch"], { stdio: "inherit" });
+      spawnSync("git", ["push", "--follow-tags"], {
+        stdio: "inherit",
+      });
+    }
+  } catch (error) {
+    process.exit(1);
   }
 })();
