@@ -32,8 +32,8 @@ const updateNpm = async (name) => {
   );
 };
 
-(() => {
-  updateNpm("novel-segment");
+(async () => {
+  await updateNpm("novel-segment");
 
   const { stdout } = spawnSync("git", ["cherry", "-v"]);
   if (stdout.length) {
