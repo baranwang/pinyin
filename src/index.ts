@@ -18,7 +18,7 @@ export class Pinyin {
   constructor() {
     this.#wordsDict = this.#convertDict(require(wordsDict));
     this.#phrasesDict = this.#convertDict(require(phrasesDict));
-    this.#segment.useDefault({ nodict: true })
+    this.#segment.useDefault({ nodict: true, nodeNovelMode: false })
     this.#segment.loadDict(resolve(__dirname, segmentDict));
   }
 
@@ -69,10 +69,6 @@ export class Pinyin {
     return textArr;
   }
 
-  #finder(dict: Record<string, string>, text: string) {
-    return dict[text] ?? "";
-  }
-
   #convertPinyin(textArr: ITextArray) {
     let reslut: string[][] = []
     for (let index = 0; index < textArr.length; index++) {
@@ -85,11 +81,11 @@ export class Pinyin {
           simple: true,
         })
         data.forEach((word) => {
-          const res = this.#finder(this.#phrasesDict, word)
+          const res = this.#phrasesDict[word]
           if (res) {
             reslut.push([res]);
           } else {
-            reslut.push(...word.split('').map(item => this.#finder(this.#wordsDict, item).split(',')))
+            reslut.push(...word.split('').map(item => this.#wordsDict[item].split(',')))
           }
         })
       }
