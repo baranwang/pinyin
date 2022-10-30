@@ -1,6 +1,6 @@
 {
   "name": "@baranwang/pinyin",
-  "version": "1.5.56",
+  "version": "1.5.57",
   "description": "Node.js 汉字转拼音",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
