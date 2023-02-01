@@ -1,25 +1,19 @@
-import { Segment } from "novel-segment";
-import { resolve } from 'path'
-import wordsDict from "./data/words.json";
 import phrasesDict from "./data/phrases.json";
-import segmentDict from './data/dict.txt'
+import wordsDict from "./data/words.json";
 
 type ITextArray = {
   type: 'hans' | 'nohans'
   text: string;
 }[]
 export class Pinyin {
-  #segment = new Segment()
-
   #wordsDict: Record<string, string> = {};
-
   #phrasesDict: Record<string, string> = {};
 
-  constructor() {
+  constructor(
+    public participleFunc: (text: string) => string[],
+  ) {
     this.#wordsDict = this.#convertDict(require(wordsDict));
     this.#phrasesDict = this.#convertDict(require(phrasesDict));
-    this.#segment.useDefault({ nodict: true, nodeNovelMode: false })
-    this.#segment.loadDict(resolve(__dirname, segmentDict));
   }
 
   get(text: string) {
@@ -77,9 +71,7 @@ export class Pinyin {
         reslut.push([item.text]);
       }
       if (item.type === 'hans') {
-        const data = this.#segment.doSegment(item.text, {
-          simple: true,
-        })
+        const data = this.participleFunc(item.text)
         data.forEach((word) => {
           const res = this.#phrasesDict[word]
           if (res) {

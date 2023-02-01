@@ -103,8 +103,10 @@ const makeDict = () => {
     }
   });
 
+  fs.mkdirSync(path.resolve("dist/dict"), { recursive: true });
+
   fs.writeFileSync(
-    path.resolve("src/data/dict.txt"),
+    path.resolve("dist/dict/novel-segment.txt"),
     result.sort().join("\n"),
     "utf8"
   );
