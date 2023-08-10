@@ -32,6 +32,6 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "novel-segment": "^2.7.104"
+    "novel-segment": "^2.7.105"
   }
 }
